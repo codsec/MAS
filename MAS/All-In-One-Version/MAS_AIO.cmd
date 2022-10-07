@@ -167,20 +167,23 @@ set "mastemp=%SystemRoot%\Temp\__MAS"
 if exist "%mastemp%\.*" rmdir /s /q "%mastemp%\" %nul%
 
 echo:
-echo:
-echo:
+call :_color2 %_Red% "       ______     ______     _____     ______     ______     ______"
+call :_color2 %_Red% "      /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\"
+call :_color2 %_Red% "      \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____"
+call :_color2 %_Red% "       \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\"
+call :_color2 %_Red% "        \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/"
 echo:
 echo:       ______________________________________________________________
 echo:
-echo:                 Activation Methods:
+echo:                 Metodos de Ativacao:
 echo:
-echo:             [1] HWID        ^|  Windows           ^|   Permanent
-echo:             [2] KMS38       ^|  Windows           ^|   2038 Year
-echo:             [3] Online KMS  ^|  Windows / Office  ^|    180 Days
+echo:             [1] HWID        ^|  Windows           ^|   Permanente
+echo:             [2] KMS38       ^|  Windows           ^|   2038 / Ano
+echo:             [3] Online KMS  ^|  Windows / Office  ^|    180 / Dias
 echo:             __________________________________________________      
 echo:                                                                     
-echo:             [4] Check Activation Status [vbs]
-echo:             [5] Check Activation Status [wmi]
+echo:             [4] Verificar o status de ativacao [vbs]
+echo:             [5] Verificar o status de ativacao [wmi]
 echo:             __________________________________________________      
 echo:                                                                     
 echo:             [6] Extras                                               
@@ -188,7 +191,7 @@ echo:             [7] Read Me
 echo:             [8] Exit                                   
 echo:       ______________________________________________________________
 echo:
-call :_color2 %_White% "         " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5,6,7,8] :"
+call :_color2 %_White% "         " %_Green% "Digite uma opcao de menu no teclado [1,2,3,4,5,6,7,8] :"
 choice /C:12345678 /N
 set _erl=%errorlevel%
 
@@ -216,19 +219,19 @@ echo:
 echo:
 echo:       ______________________________________________________________
 echo:
-echo:             [1] Activation Troubleshoot
+echo:             [1] Ativacao Troubleshoot
 echo:
-echo:             [2] Extract $OEM$ Folder
+echo:             [2] Extrair a pasta $OEM$
 echo:
-echo:             [3] Insert Windows HWID Key
+echo:             [3] Inserir chave HWID do Windows
 echo:
-echo:             [4] Change Windows Edition
+echo:             [4] Mudar edicao Windows
 echo:             __________________________________________________      
 echo:                                                                     
-echo:             [5] Go to Main Menu
+echo:             [5] Voltar
 echo:       ______________________________________________________________
 echo:
-call :_color2 %_White% "           " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5] :"
+call :_color2 %_White% "           " %_Green% "Digite uma opcao de menu no teclado [1,2,3,4,5] :"
 choice /C:12345 /N
 set _erl=%errorlevel%
 
@@ -252,7 +255,7 @@ if not exist "!_desktop_!\" (
 echo Desktop location was not detected, aborting...
 echo _____________________________________________________
 echo:
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 goto Extras
 )
@@ -262,7 +265,7 @@ if exist "!_desktop_!\$OEM$\" (
 echo $OEM$ folder already exists on the Desktop.
 echo _____________________________________________________
 echo:
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 goto Extras
 )
@@ -292,7 +295,7 @@ echo:
 echo:             [6] Go Back
 echo:       ______________________________________________________________
 echo:  
-call :_color2 %_White% "           " %_Green% "Enter a menu option in the Keyboard:"
+call :_color2 %_White% "           " %_Green% "Digite uma opcao de menu no teclado:"
 choice /C:123456 /N
 set _erl=%errorlevel%
 
@@ -325,7 +328,7 @@ echo       extract from MAS separate files version.
 )
 echo ___________________________________________________________________
 echo:
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 goto Extras
 
@@ -731,7 +734,7 @@ REM echo:
 REM echo                 [0] %_exitmsg%
 REM echo         ____________________________________________________________
 REM echo: 
-REM call :dk_color2 %_White% "              " %_Green% "Enter a menu option in the Keyboard:"
+REM call :dk_color2 %_White% "              " %_Green% "Digite uma opcao de menu no teclado:"
 REM choice /C:1GC0 /N
 REM set _el=!errorlevel!
 REM if !_el!==4  exit /b
@@ -758,7 +761,7 @@ REM call :dk_color2 %_White% " " %Green% "Note:"
 REM echo  Microsoft accepts both types of tickets and that's unlikely to change.
 REM call :dk_color2 %_White% " " %Green% "On a production system we suggest to use Downlevel [default] Method only."
 REM echo:
-REM call :dk_color %_Yellow% " Press any key to go back..."
+REM call :dk_color %_Yellow% " Pressione qualquer tecla para voltar..."
 REM pause >nul
 REM goto :dl_menu
 REM )
@@ -782,7 +785,7 @@ set _gent=0
 echo File '%Systemdrive%\GenuineTicket.xml' already exist.
 if %_unattended%==0 (
 echo:
-call :dk_color %_Yellow% "Press any key to go back..."
+call :dk_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 goto dl_menu
 ) else (
@@ -3651,7 +3654,7 @@ echo:
 echo                 [4] %_exitmsg%
 echo         ____________________________________________________________
 echo: 
-call :dk_color2 %_White% "              " %_Green% "Enter a menu option in the Keyboard [1,2,3,4]"
+call :dk_color2 %_White% "              " %_Green% "Digite uma opcao de menu no teclado [1,2,3,4]"
 choice /C:1234 /N
 set _el=!errorlevel!
 if !_el!==4  exit /b
@@ -3692,7 +3695,7 @@ set _gent=0
 echo File '%Systemdrive%\GenuineTicket.xml' already exist.
 if %_unattended%==0 (
 echo:
-call :dk_color %_Yellow% "Press any key to go back..."
+call :dk_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 goto k_menu
 ) else (
@@ -5098,7 +5101,7 @@ echo.
 echo.              [7] %_exitmsg%
 echo.       ______________________________________________________________
 echo.
-call :_color2 %_White% "           " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5,6,7]"
+call :_color2 %_White% "           " %_Green% "Digite uma opcao de menu no teclado [1,2,3,4,5,6,7]"
 choice /C:1234567 /N
 set _el=%errorlevel%
 
@@ -5254,7 +5257,7 @@ if %_Debug% EQU 0 (
 @echo off
 if defined _gui if %_Debug%==1 (
 echo.
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 )
@@ -5295,7 +5298,7 @@ call :_color %_Red% "Internet is not connected, continuing the process anyway."
 %eline%
 echo Internet is not connected.
 echo:
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 )
@@ -7804,7 +7807,7 @@ if defined _unattended exit /b
 
 echo ___________________________________________________________________
 echo.
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
@@ -7993,7 +7996,7 @@ echo ___________________________________________________________________________
 if defined _unattended exit /b
 
 echo.
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
@@ -8150,7 +8153,7 @@ echo ___________________________________________________________________________
 if defined _unattended exit /b
 
 echo.
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
@@ -9245,7 +9248,7 @@ cscript //nologo "!office!\ospp.vbs" /dstatus
 
 :casVend
 echo.
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
@@ -9304,7 +9307,7 @@ if %_cwmi% EQU 0 (
 echo:
 echo Error: wmic.exe is not responding in the system.
 echo:
-echo Press any key to go back...
+echo Pressione qualquer tecla para voltar...
 pause >nul
 exit /b
 )
@@ -9570,7 +9573,7 @@ echo %line3%
 echo.
 )
 echo.
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
@@ -9834,7 +9837,7 @@ echo:             [6] Solution: Office is not genuine banner
 echo:             [0] Go Back
 echo:       _______________________________________________________________
 echo:          
-call :_color2 %_White% "            " %_Green% "Enter a menu option in the Keyboard :"
+call :_color2 %_White% "            " %_Green% "Digite uma opcao de menu no teclado :"
 choice /C:1234560 /N
 set _erl=%errorlevel%
 
@@ -10343,7 +10346,7 @@ call :_color %Green% "Finished"
 echo:
 echo %line%
 echo:
-call :_color %_Yellow% "Press any key to go back..."
+call :_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 goto :at_menu
 
@@ -10352,7 +10355,7 @@ goto :at_menu
 :at_done
 
 echo:
-echo Press any key to go back...
+echo Pressione qualquer tecla para voltar...
 pause >nul
 exit /b
 
@@ -10611,7 +10614,7 @@ if not defined applist echo Not Respoding: %e_wmispp%
 
 echo:
 if %_unattended%==1 timeout /t 2 & exit /b
-call :dk_color %_Yellow% "Press any key to go back..."
+call :dk_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
@@ -10979,7 +10982,7 @@ call :dk_color %Magenta% "Make sure to restart the system."
 :ced_done
 
 echo:
-call :dk_color %_Yellow% "Press any key to go back..."
+call :dk_color %_Yellow% "Pressione qualquer tecla para voltar..."
 pause >nul
 exit /b
 
