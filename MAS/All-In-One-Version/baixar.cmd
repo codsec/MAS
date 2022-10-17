@@ -1,3 +1,3 @@
 @echo off
-curl -O https://pcxel.com.br/arquivos/winrar.exe --output ~/Downloads
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/winrar.exe
 pause
