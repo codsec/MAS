@@ -3,12 +3,6 @@
 mode con:cols=90 lines=30
 color 0c
 
-:: Check authorization rights
-net session >nul 2>&1
-if not %errorlevel% equ 0 (
-  echo ERROR - Insufficient permissions.
-  goto end
-)
 cls
 
 :: Disable UAC
