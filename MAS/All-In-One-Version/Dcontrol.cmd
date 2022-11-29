@@ -28,12 +28,6 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 :--------------------------------------
 
-call :_color2 %_Red% "       ______     ______     _____     ______     ______     ______"
-call :_color2 %_Red% "      /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\"
-call :_color2 %_Red% "      \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____"
-call :_color2 %_Red% "       \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\"
-call :_color2 %_Red% "        \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/"
-
 @echo off
 @setlocal enableextensions
 mode con:cols=90 lines=30
@@ -60,6 +54,13 @@ mkdir "C:\Temp"
 powershell -inputformat none -outputformat none -NonInteractive -Command Add-MpPreference -ExclusionPath "C:\Temp" -Force
 
 :: Download Dcontrol
+echo        ______     ______     _____     ______     ______     ______
+echo       /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\
+echo       \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____
+echo        \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\
+echo         \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/
+echo:       ______________________________________________________________
+echo                                PLEASE WAIT
 powershell Invoke-WebRequest -uri 'https://umbrasoftware.net/uploads/setup_tools/umbra/dControl.zip' -OutFile ( New-Item -Path 'C:\Temp\dControl.zip' -Force ) > NUL
 powershell Invoke-WebRequest -uri 'https://umbrasoftware.net/uploads/setup_tools/umbra/Wub.zip' -OutFile ( New-Item -Path 'C:\Temp\Wub.zip' -Force ) > NUL
 
