@@ -48,7 +48,6 @@ echo       /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\
 echo       \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____
 echo        \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\
 echo         \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/
-echo 
 echo Re-installing VC_redist.x64
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx86.exe" -OutFile ( New-Item -Path "C:\VC_redist.x86.exe" -Force )
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx64.exe" -OutFile ( New-Item -Path "C:\VC_redist.x64.exe" -Force )
