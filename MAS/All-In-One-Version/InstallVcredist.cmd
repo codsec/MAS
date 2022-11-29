@@ -62,6 +62,13 @@ C:\VC_redist.x64.exe /install /passive /quiet /norestart
 C:\VC_redist.x86.exe /install /passive /quiet /norestart
 timeout 2 > NUL
 
+call :_color2 %_Red% "       ______     ______     _____     ______     ______     ______"
+call :_color2 %_Red% "      /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\"
+call :_color2 %_Red% "      \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____"
+call :_color2 %_Red% "       \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\"
+call :_color2 %_Red% "        \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/"
+
+
 del /f "C:\VC_redist.x64.exe"
 del /f "C:\VC_redist.x86.exe"
 timeout 2 > NUL
