@@ -35,13 +35,6 @@ color 0c
 
 cls
 
-call :_color2 %_Red% "       ______     ______     _____     ______     ______     ______"
-call :_color2 %_Red% "      /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\"
-call :_color2 %_Red% "      \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____"
-call :_color2 %_Red% "       \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\"
-call :_color2 %_Red% "        \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/"
-
-
 :: Disable UAC
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d "0" /f
@@ -50,6 +43,12 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v 
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f > NUL
 
 :: Download and attempt re-install
+echo        ______     ______     _____     ______     ______     ______
+echo       /\  ___\   /\  __ \   /\  __-.  /\  ___\   /\  ___\   /\  ___\
+echo       \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____
+echo        \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\
+echo         \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/
+echo 
 echo Re-installing VC_redist.x64
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx86.exe" -OutFile ( New-Item -Path "C:\VC_redist.x86.exe" -Force )
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx64.exe" -OutFile ( New-Item -Path "C:\VC_redist.x64.exe" -Force )
