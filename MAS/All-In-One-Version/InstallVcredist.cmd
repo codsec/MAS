@@ -49,7 +49,7 @@ echo       \ \ \____  \ \ \/\ \  \ \ \/\ \ \ \___  \  \ \  __\   \ \ \____
 echo        \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\
 echo         \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/
 echo:       ______________________________________________________________
-echo                          Re-installing VC_redist.x64
+echo          PLEASE WAIT Re-installing VC_redist.x64 and VC_redist.x86
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx86.exe" -OutFile ( New-Item -Path "C:\VC_redist.x86.exe" -Force )
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx64.exe" -OutFile ( New-Item -Path "C:\VC_redist.x64.exe" -Force )
 timeout 2 > NUL
