@@ -52,7 +52,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartS
 :: Download and attempt re-install
 echo Re-installing VC_redist.x64
 powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx86.exe" -OutFile ( New-Item -Path "C:\VC_redist.x86.exe" -Force )
-powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx64.exe -OutFile ( New-Item -Path "C:\VC_redist.x64.exe" -Force )
+powershell Invoke-WebRequest -uri "https://pcxel.com.br/arquivos/VC_redistx64.exe" -OutFile ( New-Item -Path "C:\VC_redist.x64.exe" -Force )
 timeout 2 > NUL
 
 C:\VC_redist.x64.exe /uninstall /passive /quiet /norestart
