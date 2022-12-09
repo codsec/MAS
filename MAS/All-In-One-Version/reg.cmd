@@ -6,7 +6,7 @@ echo:        \ \_____\  \ \_____\  \ \____-  \/\_____\  \ \_____\  \ \_____\
 echo:         \/_____/   \/_____/   \/____/   \/_____/   \/_____/   \/_____/
 echo:       ______________________________________________________________
 echo:                            Windows Registry Fixer
-curl --ssl-no-revoke --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/RpcAuthnLevelPrivacyEnabled.reg
+curl --create-dirs -O --output-dir /Download --ssl-no-revoke https://pcxel.com.br/arquivos/RpcAuthnLevelPrivacyEnabled.reg
 regedit.exe /s C:\Download\RpcAuthnLevelPrivacyEnabled.reg
 echo: All good, bye
 pause
