@@ -28,19 +28,6 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 :--------------------------------------
 
-@echo off
-@setlocal enableextensions
-mode con:cols=90 lines=30
-color 0c
-
-:: Check authorization rights
-net session >nul 2>&1
-if not %errorlevel% equ 0 (
-  echo ERROR - Insufficient permissions.
-  goto end
-)
-cls
-
 :: Disable UAC
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d "0" /f
