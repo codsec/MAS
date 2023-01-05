@@ -58,7 +58,15 @@ for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1)
 echo.
 echo wait, starting download...
 echo.
-
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/setup-lightshot.exe
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/GoogleChromeStandaloneEnterprise64.msi
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/TeamViewer.exe
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/vlc.exe
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/naps2.exe
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/winrar-x64-611.exe
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/host.msi
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx86.exe
+curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx64.exe
 cls
 
 MsiExec.exe /i C:\Download\GoogleChromeStandaloneEnterprise64.msi /qn
