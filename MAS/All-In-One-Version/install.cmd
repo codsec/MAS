@@ -1,4 +1,56 @@
+REM --add the following to the top of your bat file--
+
+
 @echo off
+
+:: BatchGotAdmin
+:-------------------------------------
+REM  --> Check for permissions
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
+
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    set params = %*:"=""
+    echo UAC.ShellExecute "cmd.exe", "/c %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs"
+
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    pushd "%CD%"
+    CD /D "%~dp0"
+:--------------------------------------
+
+@echo off
+@setlocal enableextensions
+mode con:cols=90 lines=30
+color 0c
+
+:: Check authorization rights
+net session >nul 2>&1
+if not %errorlevel% equ 0 (
+  echo ERROR - Insufficient permissions.
+  goto end
+)
+cls
+
+:: Disable UAC
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d "0" /f
+
+:: Disable Smart Screen
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f > NUL
+
+
+
+
 SETLOCAL EnableDelayedExpansion
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
   set "DEL=%%a"
@@ -6,15 +58,7 @@ for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1)
 echo.
 echo wait, starting download...
 echo.
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/setup-lightshot.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/GoogleChromeStandaloneEnterprise64.msi
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/TeamViewer.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/vlc.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/naps2.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/winrar-x64-611.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/host.msi
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx86.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx64.exe
+
 cls
 
 MsiExec.exe /i C:\Download\GoogleChromeStandaloneEnterprise64.msi /qn
@@ -44,6 +88,7 @@ echo:-------------------------------
 
 C:\Download\setup-lightshot.exe /VERYSILENT /NORESTART
 call :colorEcho 0e " LightShot"
+timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
@@ -51,6 +96,7 @@ echo:-------------------------------
 
 C:\Download\naps2.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " NAPS2"
+timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
@@ -58,6 +104,7 @@ echo:-------------------------------
 
 C:\Download\winrar-x64-611.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " Winrar"
+timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
@@ -65,6 +112,7 @@ echo:-------------------------------
 
 MsiExec.exe /i C:\Download\host.msi /qn
 call :colorEcho 0e " Remote Utilities[HOST]"
+timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
@@ -73,7 +121,8 @@ start C:\Download\VC_redistx64.exe /uninstall /passive /quiet /norestart
 start C:\Download\VC_redistx86.exe /uninstall /passive /quiet /norestart
 start C:\Download\VC_redistx64.exe /install /passive /quiet /norestart
 start C:\Download\VC_redistx86.exe /install /passive /quiet /norestart
-call :colorEcho 0e " Remote Utilities[HOST]"
+call :colorEcho 0e " VCredist 64/86"
+timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
