@@ -3,6 +3,9 @@ SETLOCAL EnableDelayedExpansion
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
   set "DEL=%%a"
 )
+echo.
+echo wait, starting download...
+echo.
 curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/setup-lightshot.exe
 curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/GoogleChromeStandaloneEnterprise64.msi
 curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/TeamViewer.exe
@@ -14,7 +17,6 @@ curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_re
 curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx64.exe
 cls
 
-echo:-------------------------------
 MsiExec.exe /i C:\Download\GoogleChromeStandaloneEnterprise64.msi /qn
 echo.
 call :colorEcho 0e " Google Chrome"
@@ -67,6 +69,8 @@ call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
 
+start C:\Download\VC_redistx64.exe /uninstall /passive /quiet /norestart
+start C:\Download\VC_redistx86.exe /uninstall /passive /quiet /norestart
 start C:\Download\VC_redistx64.exe /install /passive /quiet /norestart
 start C:\Download\VC_redistx86.exe /install /passive /quiet /norestart
 call :colorEcho 0e " Remote Utilities[HOST]"
@@ -91,6 +95,13 @@ ECHO.
 GOTO start
 
 :no
+:: Reset Network
+ipconfig /flushdns
+ipconfig /registerdns
+
+netsh winsock reset
+netsh int ip reset
+cls
 ECHO bye
 PAUSE
 EXIT
@@ -105,6 +116,13 @@ call :colorEcho 0e " AcroRdrDC"
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
+:: Reset Network
+ipconfig /flushdns
+ipconfig /registerdns
+
+netsh winsock reset
+netsh int ip reset
+cls
 PAUSE
 EXIT
 
