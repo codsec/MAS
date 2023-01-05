@@ -31,7 +31,6 @@ if '%errorlevel%' NEQ '0' (
 @echo off
 @setlocal enableextensions
 mode con:cols=90 lines=30
-color 0c
 
 :: Check authorization rights
 net session >nul 2>&1
