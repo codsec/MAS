@@ -129,8 +129,8 @@ C:\naps2.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " Naps 2"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
-tasklist | find /i "w3wp.exe" && taskkill /im NAPS2.exe /F || echo process "NAPS2.exe" not running.
 echo.
+tasklist | find /i "naps2.exe" && taskkill /im NAPS2.exe /F || echo process "NAPS2.exe" not running.
 C:\winrar-x64-611.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " Winrar"
 timeout 2 > NUL
