@@ -1,3 +1,8 @@
+REM --add the following to the top of your bat file--
+
+
+@echo off
+
 :: BatchGotAdmin
 :-------------------------------------
 REM  --> Check for permissions
@@ -22,105 +27,155 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 :--------------------------------------
-
-cls
-
-:: Disable UAC
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d "0" /f
-
-:: Disable Smart Screen
-Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f > NUL
-
-
-
-
-
 SETLOCAL EnableDelayedExpansion
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
   set "DEL=%%a"
 )
-echo.
-echo wait, starting download...
-echo.
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/setup-lightshot.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/GoogleChromeStandaloneEnterprise64.msi
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/TeamViewer.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/vlc.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/naps2.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/winrar-x64-611.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/host.msi
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx86.exe
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/arquivos/VC_redistx64.exe
+
+@echo off
+@setlocal enableextensions
+:: Disable UAC
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d "0" /f
+:: Disable Smart Screen
+Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f > NUL
 cls
 
-MsiExec.exe /i C:\Download\GoogleChromeStandaloneEnterprise64.msi /qn
+:: Main #1
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
 echo.
-call :colorEcho 0e " Google Chrome"
+echo             [                  starting                   ]
+
+
+
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/setup-lightshot.exe" -OutFile ( New-Item -Path "C:\setup-lightshot.exe" -Force )
+cls
+:: Main #1
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
+echo.
+echo             [=====                                        ]
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/arquivos/VC_redistx86.exe" -OutFile ( New-Item -Path "C:\VC_redistx86.exe" -Force )
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/arquivos/VC_redistx64.exe" -OutFile ( New-Item -Path "C:\VC_redistx64.exe" -Force )
+cls
+:: Main #2
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
+echo.
+echo             [===========                                  ]
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/googlechromestandaloneenterprise64.msi" -OutFile ( New-Item -Path "C:\googlechromestandaloneenterprise64.msi" -Force )
+cls
+:: Main #3
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
+echo.
+echo             [====================                         ]
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/TeamViewer.exe" -OutFile ( New-Item -Path "C:\TeamViewer.exe" -Force )
+cls
+:: Main #4
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
+echo.
+echo             [==========================                   ]
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc.exe" -OutFile ( New-Item -Path "C:\vlc.exe" -Force )
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/naps2.exe" -OutFile ( New-Item -Path "C:\naps2.exe" -Force )
+cls
+:: Main #5
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
+echo.
+echo             [======================================       ]
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/winrar-x64-611.exe" -OutFile ( New-Item -Path "C:\winrar-x64-611.exe" -Force )
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/host.msi" -OutFile ( New-Item -Path "C:\host.msi" -Force )
+cls
+:: Main #6
+echo          ______   ______        __  __     ______     __       
+echo         /\  == \ /\  ___\      /\_\_\_\   /\  ___\   /\ \       
+echo         \ \  _-/ \ \ \____     \/_/\_\/_  \ \  __\   \ \ \____  
+echo          \ \_\    \ \_____\      /\_\/\_\  \ \_____\  \ \_____\ 
+echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/ 
+echo:      ______________________________________________________________
+echo.
+echo             [=============================================]
+timeout 2 > NUL
+
+C:\VC_redistx64.exe /uninstall /passive /quiet /norestart
+C:\VC_redistx86.exe /uninstall /passive /quiet /norestart
+timeout 2 > NUL
+
+echo. 
+C:\VC_redistx64.exe /install /passive /quiet /norestart
+C:\VC_redistx86.exe /install /passive /quiet /norestart
+call :colorEcho 0e " VCredist x64 & x86"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-echo:-------------------------------
-
-
-C:\Download\TeamViewer.exe /S
-call :colorEcho 0e " TeamViewer"
+C:\GoogleChromeStandaloneEnterprise64.msi /qn
+call :colorEcho 0e " Chrome"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-echo:-------------------------------
-
-
-C:\Download\vlc.exe /S
-call :colorEcho 0e " VLC"
-timeout 2 > NUL
-call :colorEcho 0a " Finished!"
-echo.
-echo:-------------------------------
-
-
-C:\Download\setup-lightshot.exe /VERYSILENT /NORESTART
+C:\setup-lightshot.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " LightShot"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-echo:-------------------------------
-
-
-C:\Download\naps2.exe /S /VERYSILENT /NORESTART
-call :colorEcho 0e " NAPS2"
+C:\TeamViewer.exe /S
+call :colorEcho 0e " TeamViewer"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-echo:-------------------------------
-
-
-C:\Download\winrar-x64-611.exe /S /VERYSILENT /NORESTART
+C:\vlc.exe /S
+call :colorEcho 0e " VLC"
+timeout 2 > NUL
+call :colorEcho 0a " Finished!"
+echo.
+C:\naps2.exe /S /VERYSILENT /NORESTART
+call :colorEcho 0e " Naps 2"
+timeout 2 > NUL
+call :colorEcho 0a " Finished!"
+echo.
+C:\winrar-x64-611.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " Winrar"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-echo:-------------------------------
-
-
-MsiExec.exe /i C:\Download\host.msi /qn
+C:\host.msi /qn
 call :colorEcho 0e " Remote Utilities[HOST]"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-echo:-------------------------------
 
-start C:\Download\VC_redistx64.exe /uninstall /passive /quiet /norestart
-start C:\Download\VC_redistx86.exe /uninstall /passive /quiet /norestart
-start C:\Download\VC_redistx64.exe /install /passive /quiet /norestart
-start C:\Download\VC_redistx86.exe /install /passive /quiet /norestart
-call :colorEcho 0e " VCredist 64/86"
 timeout 2 > NUL
-call :colorEcho 0a " Finished!"
-echo.
-echo:-------------------------------
 
-
+del /f "C:\VC_redistx64.exe"
+del /f "C:\VC_redistx86.exe"
+timeout 2 > NUL
 
 
 SET choice=
@@ -152,12 +207,15 @@ EXIT
 echo.
 echo: Isso pode demorar um pouco aguarde...
 echo.
-curl --create-dirs -O --output-dir /Download https://pcxel.com.br/install/AcroRdrDC.exe
-C:\Download\AcroRdrDC.exe /VERYSILENT /NORESTART /passive /quiet
+powershell (New-Object Net.WebClient).DownloadFile("https://pcxel.com.br/install/AcroRdrDC.exe", "C:\AcroRdrDC.exe")
+C:\AcroRdrDC.exe -sfx_o"C:\ReaderDC" -sfx_ne
+C:\ReaderDC\AcroRdrDC.exe /sAll /rs /msi EULA_ACCEPT=YES
 call :colorEcho 0e " AcroRdrDC"
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
+
+
 :: Reset Network
 ipconfig /flushdns
 ipconfig /registerdns
@@ -165,9 +223,13 @@ ipconfig /registerdns
 netsh winsock reset
 netsh int ip reset
 cls
-PAUSE
-EXIT
 
+goto end
+
+:: Exit
+:end
+pause
+exit
 
 :colorEcho
 echo off
