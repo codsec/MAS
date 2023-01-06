@@ -68,7 +68,7 @@ echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/
 echo:      ______________________________________________________________
 echo.
 echo             [==========================                   ]
-powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc-3.0.18-win64.msi" -OutFile ( New-Item -Path "C:\vlc-3.0.18-win64.msi" -Force )
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc-3.0.18-win64.msi" -OutFile ( New-Item -Path "C:\vlc-3.0.17.4-win64.exe" -Force )
 powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/naps2.exe" -OutFile ( New-Item -Path "C:\naps2.exe" -Force )
 cls
 :: Main #5
@@ -120,7 +120,7 @@ call :colorEcho 0e " TeamViewer"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-C:\vlc-3.0.18-win64.msi /S
+C:\vlc-3.0.17.4-win64.exe /S
 call :colorEcho 0e " VLC"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
@@ -185,14 +185,12 @@ echo.
 echo: Isso pode demorar um pouco aguarde...
 echo.
 powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/AcroRdrDC.exe" -OutFile ( New-Item -Path "C:\AcroRdrDC.exe" -Force )
-C:\AcroRdrDC.exe -sfx_o"C:\ReaderDC" -sfx_ne
-C:\ReaderDC\AcroRdrDC.exe /sAll /rs /msi EULA_ACCEPT=YES
+C:\AcroRdrDC.exe /sAll /rs /msi EULA_ACCEPT=YES
 call :colorEcho 0e " AcroRdrDC"
+timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
-
-del /f "C:\ReaderDC"
 del /f "C:\AcroRdrDC.exe"
 timeout 2 > NUL
 :: Reset Network
