@@ -68,7 +68,7 @@ echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/
 echo:      ______________________________________________________________
 echo.
 echo             [==========================                   ]
-powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc-3.0.18-win64.msi" -OutFile ( New-Item -Path "C:\vlc-3.0.17.4-win64.exe" -Force )
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc-3.0.17.4-win64.exe" -OutFile ( New-Item -Path "C:\vlc-3.0.17.4-win64.exe" -Force )
 powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/naps2.exe" -OutFile ( New-Item -Path "C:\naps2.exe" -Force )
 cls
 :: Main #5
@@ -148,7 +148,7 @@ del /f "C:\VC_redistx86.exe"
 del /f "C:\host.msi"
 del /f "C:\winrar-x64-611.exe"
 del /f "C:\naps2.exe"
-del /f "C:\vlc-3.0.18-win64.msi"
+del /f "C:\vlc-3.0.17.4-win64.exe"
 del /f "C:\TeamViewer.exe"
 del /f "C:\setup-lightshot.exe"
 del /f "C:\GoogleChromeStandaloneEnterprise64.msi"
