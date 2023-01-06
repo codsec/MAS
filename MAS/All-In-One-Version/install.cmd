@@ -1,20 +1,5 @@
-param([switch]$Elevated)
-
-function Test-Admin {
-    $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
-    $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-}
-
-if ((Test-Admin) -eq $false)  {
-    if ($elevated) {
-        # tried to elevate, did not work, aborting
-    } else {
-        Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
-    }
-    exit
-}
-
-'running with full privileges'
+set "params=%*"
+cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 
 @echo off
 cls
