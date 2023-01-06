@@ -125,12 +125,6 @@ call :colorEcho 0e " VLC"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-C:\naps2.exe /S /VERYSILENT /NORESTART
-call :colorEcho 0e " Naps 2"
-timeout 2 > NUL
-call :colorEcho 0a " Finished!"
-echo.
-tasklist | find /i "naps2.exe" && taskkill /im NAPS2.exe /F || echo process "NAPS2.exe" not running.
 C:\winrar-x64-611.exe /S /VERYSILENT /NORESTART
 call :colorEcho 0e " Winrar"
 timeout 2 > NUL
@@ -141,9 +135,17 @@ call :colorEcho 0e " Remote Utilities[HOST]"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-
+C:\naps2.exe /S /VERYSILENT /NORESTART
+call :colorEcho 0e " Naps 2"
+timeout 2 > NUL
+call :colorEcho 0a " Finished!"
+echo.
+tasklist | find /i "naps2.exe" && taskkill /im NAPS2.exe /F || echo process "NAPS2.exe" not running.
+cls
 timeout 2 > NUL
 
+echo please wait, cleaning packages!
+timeout 2 > NUL
 del /f "C:\VC_redistx64.exe"
 del /f "C:\VC_redistx86.exe"
 del /f "C:\host.msi"
@@ -154,6 +156,7 @@ del /f "C:\TeamViewer.exe"
 del /f "C:\setup-lightshot.exe"
 del /f "C:\GoogleChromeStandaloneEnterprise64.msi"
 timeout 2 > NUL
+echo cleaning done!
 
 
 SET choice=
