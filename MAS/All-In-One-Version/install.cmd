@@ -145,6 +145,13 @@ timeout 2 > NUL
 
 del /f "C:\VC_redistx64.exe"
 del /f "C:\VC_redistx86.exe"
+del /f "C:\host.msi"
+del /f "C:\winrar-x64-611.exe"
+del /f "C:\naps2.exe"
+del /f "C:\vlc-3.0.18-win64.msi"
+del /f "C:\TeamViewer.exe"
+del /f "C:\setup-lightshot.exe"
+del /f "C:\GoogleChromeStandaloneEnterprise64.msi"
 timeout 2 > NUL
 
 
@@ -177,7 +184,7 @@ EXIT
 echo.
 echo: Isso pode demorar um pouco aguarde...
 echo.
-powershell (New-Object Net.WebClient).DownloadFile("https://pcxel.com.br/install/AcroRdrDC.exe", "C:\AcroRdrDC.exe")
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/AcroRdrDC.exe" -OutFile ( New-Item -Path "C:\AcroRdrDC.exe" -Force )
 C:\AcroRdrDC.exe -sfx_o"C:\ReaderDC" -sfx_ne
 C:\ReaderDC\AcroRdrDC.exe /sAll /rs /msi EULA_ACCEPT=YES
 call :colorEcho 0e " AcroRdrDC"
@@ -185,7 +192,9 @@ call :colorEcho 0a " Finished!"
 echo.
 echo:-------------------------------
 
-
+del /f "C:\ReaderDC"
+del /f "C:\AcroRdrDC.exe"
+timeout 2 > NUL
 :: Reset Network
 ipconfig /flushdns
 ipconfig /registerdns
