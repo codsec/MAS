@@ -68,7 +68,7 @@ echo           \/_/     \/_____/      \/_/\/_/   \/_____/   \/_____/
 echo:      ______________________________________________________________
 echo.
 echo             [==========================                   ]
-powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc.exe" -OutFile ( New-Item -Path "C:\vlc.exe" -Force )
+powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/vlc-3.0.18-win64.msi" -OutFile ( New-Item -Path "C:\vlc-3.0.18-win64.msi" -Force )
 powershell Set-Variable ProgressPreference SilentlyContinue ; Invoke-RestMethod -ContentType "application/octet-stream" -uri "https://pcxel.com.br/install/naps2.exe" -OutFile ( New-Item -Path "C:\naps2.exe" -Force )
 cls
 :: Main #5
@@ -120,7 +120,7 @@ call :colorEcho 0e " TeamViewer"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
 echo.
-C:\vlc.exe /S
+C:\vlc-3.0.18-win64.msi /S
 call :colorEcho 0e " VLC"
 timeout 2 > NUL
 call :colorEcho 0a " Finished!"
