@@ -146,16 +146,6 @@ timeout 2 > NUL
 
 echo please wait, cleaning packages!
 timeout 2 > NUL
-del /f "C:\VC_redistx64.exe"
-del /f "C:\VC_redistx86.exe"
-del /f "C:\host.msi"
-del /f "C:\winrar-x64-611.exe"
-del /f "C:\naps2.exe"
-del /f "C:\vlc-3.0.17.4-win64.exe"
-del /f "C:\TeamViewer.exe"
-del /f "C:\setup-lightshot.exe"
-del /f "C:\GoogleChromeStandaloneEnterprise64.msi"
-timeout 2 > NUL
 echo cleaning done!
 
 
