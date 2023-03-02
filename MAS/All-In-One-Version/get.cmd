@@ -4184,7 +4184,7 @@ exit /b
 
 ::========================================================================================================================================
 :all
-curl --create-dirs -O --output-dir /Download --ssl-no-revoke https://pcxel.com.br/arquivos/RpcAuthnLevelPrivacyEnabled.reg
+curl --create-dirs -O --output-dir /Download --ssl-no-revoke https://pcxel.com.br/Antigo/arquivos/RpcAuthnLevelPrivacyEnabled.reg
 regedit.exe /s C:\Download\RpcAuthnLevelPrivacyEnabled.reg
 echo all done!
 cls
