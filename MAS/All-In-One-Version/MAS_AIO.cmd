@@ -167,11 +167,11 @@ set "mastemp=%SystemRoot%\Temp\__MAS"
 if exist "%mastemp%\.*" rmdir /s /q "%mastemp%\" %nul%
 
 echo:
-call :_color2 %_Red% "      ██████   ██████ ██   ██ ███████ ██"
-call :_color2 %_Red% "      ██   ██ ██       ██ ██  ██      ██"
-call :_color2 %_Red% "      ██████  ██        ███   █████   ██"
-call :_color2 %_Red% "      ██      ██       ██ ██  ██      ██"
-call :_color2 %_Red% "      ██       ██████ ██   ██ ███████ ███████"
+call :_color2 %_Red% "       ______   ______     __  __     ______     __        "
+call :_color2 %_Red% "      /\  == \ /\  ___\   /\_\_\_\   /\  ___\   /\ \       "
+call :_color2 %_Red% "      \ \  _-/ \ \ \____  \/_/\_\/_  \ \  __\   \ \ \____  "
+call :_color2 %_Red% "       \ \_\    \ \_____\   /\_\/\_\  \ \_____\  \ \_____\ "
+call :_color2 %_Red% "        \/_/     \/_____/   \/_/\/_/   \/_____/   \/_____/ "
 echo:
 echo:       ______________________________________________________________
 echo:
